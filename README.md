@@ -3,7 +3,7 @@
 ## Members
 - Daniel Parra   | dparra1@ufl.edu   | github@DaniParr
 - Nicholas Sardinia  | nicholassardinia@ufl.edu | github@nsardinia
-- Eric Gjinollari | |
+- Eric Gjinollari | egjinollari@ufl.edu | github@Egjinollari
 - William Pearce | |
 
 ## Question Posed

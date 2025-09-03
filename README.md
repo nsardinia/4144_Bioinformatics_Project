@@ -4,7 +4,7 @@
 - Daniel Parra   | dparra1@ufl.edu   | github@DaniParr
 - Nicholas Sardinia  | nicholassardinia@ufl.edu | github@nsardinia
 - Eric Gjinollari | egjinollari@ufl.edu | github@Egjinollari
-- William Pearce | |
+- William Pearce | wpearce@ufl.edu | github@willfpearce
 
 ## Question Posed
 Can we identify whether hTERT expression changes the activity of genes associated with cellular aging?

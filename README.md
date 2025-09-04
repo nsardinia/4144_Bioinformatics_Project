@@ -9,6 +9,8 @@
 ## Question Posed
 Can early gene expression profiles in hFib-MYOD cells predict whether a cell will successfully complete myogenic reprogramming?
 
+_Can we distinguish a fully reprogrammed cell from others and if done successfully could we predict whether a cell will reprogram successfully by looking at prior time series steps?_
+
 ## Database
 ### Aligning single-cell developmental and reprogramming trajectories identifies molecular determinants of reprogramming outcome
 https://www.refine.bio/experiments/SRP120552/aligning-single-cell-developmental-and-reprogramming-trajectories-identifies-molecular-determinants-of-reprogramming-outcome?ref=search

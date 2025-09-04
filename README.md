@@ -7,11 +7,14 @@
 - William Pearce | wpearce@ufl.edu | github@willfpearce
 
 ## Question Posed
-Can we identify whether hTERT expression changes the activity of genes associated with cellular aging?
+Can early gene expression profiles in hFib-MYOD cells predict whether a cell will successfully complete myogenic reprogramming?
 
 ## Database
-### hTERT promotes cell adhesion and migration independent of telomerase activity
-https://www.refine.bio/experiments/SRP063948/htert-promotes-cell-adhesion-and-migration-independent-of-telomerase-activity?ref=search
+### Aligning single-cell developmental and reprogramming trajectories identifies molecular determinants of reprogramming outcome
+https://www.refine.bio/experiments/SRP120552/aligning-single-cell-developmental-and-reprogramming-trajectories-identifies-molecular-determinants-of-reprogramming-outcome?ref=search
 
-### What is hTERT?
-hTERT is a catalytic component of human telomerase. It is undetectable in normal cells but there is a spike of hTERT in cancer and stem cells where telomere length is maintained by _telomerase_ (cellular enzyme that adds repetitve DNA sequences to the ends of chromosomes, telomeres).
+### What is hFib-MYOD?
+hFib-MYOD is a specific line of human foreskin fibroblasts (hFib) genetically engineered to convert into myotube-like cells (precursors to muscle fibers) upon doxycycline induction, making it a model for cellular reporogramming.
+
+### What is myogenic reprogramming?
+The process of converting cell types like fibroblasts into muscle cells (myocytes) by forcing the expression of myogenic regulatory factors like MYOD.

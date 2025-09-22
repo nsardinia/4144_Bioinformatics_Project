@@ -1,7 +1,7 @@
 import pandas as pd
 import mygene
 
-df = pd.read_csv("data/SRP063948.tsv", sep="\t")
+df = pd.read_csv("data/SRP120552.tsv", sep="\t")
 
 ensembl_ids = df.iloc[:, 0].dropna().tolist()
 

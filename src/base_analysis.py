@@ -6,15 +6,21 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("data/with_gene_names.tsv", sep="\t")
 
-log_scaled = np.log2(df.select_dtypes(include=[np.number]) + 1)
+def densityplot(datapath):
 
-median_expression_range = log_scaled.median(axis=1, numeric_only=True)
+    df = pd.read_csv(datapath, sep="\t")
 
-median_expression_range.plot.density()
-plt.xlim(0, 5)
-plt.show()
+    log_scaled = np.log2(df.select_dtypes(include=[np.number]) + 1)  # Log scale the data
+
+    median_expression_range = log_scaled.median(axis=1, numeric_only=True)
+    median_expression_range.plot.density()  # Make density plot
+
+    print(f"Number of genes: {df.shape[0]}\nVariance: {median_expression_range.var()}")
+
+    plt.xlim(0, 5)  # Center the graph
+    plt.show()
+
 
 """
 The data sets includes 43405 genes from 658 samples with little variance. The data had a lower variance of

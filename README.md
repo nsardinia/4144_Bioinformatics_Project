@@ -1,10 +1,10 @@
 # 4144 Bio-Informatics Project
 
 ## Members
-- Daniel Parra   | dparra1@ufl.edu   | github@DaniParr
-- Nicholas Sardinia  | nicholassardinia@ufl.edu | github@nsardinia
-- Eric Gjinollari | egjinollari@ufl.edu | github@Egjinollari
-- William Pearce | wpearce@ufl.edu | github@willfpearce
+- Daniel Parra   | dparra1@ufl.edu   | github@DaniParr | topGO
+- Nicholas Sardinia  | nicholassardinia@ufl.edu | github@nsardinia | gProfiler2
+- Eric Gjinollari | egjinollari@ufl.edu | github@Egjinollari | clustProfiler
+- William Pearce | wpearce@ufl.edu | github@willfpearce | GenomicSuperSignature
 
 ## Question Posed
 Can early gene expression profiles in hFib-MYOD cells predict whether a cell will successfully complete myogenic reprogramming?

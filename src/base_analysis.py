@@ -8,17 +8,10 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv("data/with_gene_names.tsv", sep="\t")
 
-print(df.shape)  # Expression matrix is 43405 x 660
-
 log_scaled = np.log2(df.select_dtypes(include=[np.number]) + 1)
 
-print(df.head())
-
 median_expression_range = log_scaled.median(axis=1, numeric_only=True)
-print(median_expression_range.head())
-print(median_expression_range.max())
-print(median_expression_range.min())
-print(median_expression_range.var())
+
 median_expression_range.plot.density()
 plt.xlim(0, 5)
 plt.show()

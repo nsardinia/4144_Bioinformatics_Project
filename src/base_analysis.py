@@ -21,6 +21,8 @@ def densityplot(datapath):
     plt.xlim(0, 5)  # Center the graph
     plt.show()
 
+# densityplot("data/with_gene_names.tsv")
+
 
 """
 The data sets includes 43405 genes from 658 samples with little variance. The data had a lower variance of

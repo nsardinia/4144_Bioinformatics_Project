@@ -25,7 +25,8 @@ def density_plot(data_path: Path) -> None:
     plt.title("Density of median per-gene expressions")
     plt.show()
 
-# densityplot("data/with_gene_names.tsv")
+if __name__ == "__main__":
+    density_plot(Path("src/data/SRP120552.tsv").absolute())
 
 
 """

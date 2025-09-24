@@ -6,10 +6,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+from pathlib import Path
 
-def densityplot(datapath):
 
-    df = pd.read_csv(datapath, sep="\t")
+def density_plot(data_path: Path) -> None:
+
+    df = pd.read_csv(data_path, sep="\t")
 
     log_scaled = np.log2(df.select_dtypes(include=[np.number]) + 1)  # Log scale the data
 
@@ -19,6 +21,8 @@ def densityplot(datapath):
     print(f"Number of genes: {df.shape[0]}\nVariance: {median_expression_range.var()}")
 
     plt.xlim(0, 5)  # Center the graph
+    plt.xlabel("Per-gene expression range (log2 scale)")
+    plt.title("Density of median per-gene expressions")
     plt.show()
 
 # densityplot("data/with_gene_names.tsv")

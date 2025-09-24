@@ -1,0 +1,5 @@
+After running ClusterProfiler on all combinations of times in the data set a large trend was seen.
+As time progress the adjusted p-values tend to decrease, showing an increase in significance and enrichment,
+along with the data skewing towards the right showing an up regulation across all the genes.
+All the genes regardless of measuring period had very high peaks in the ridgeplot showing a large percentage
+of the data containing similar values. A conclusion that can reached is that the cells reprogram as time elapses.

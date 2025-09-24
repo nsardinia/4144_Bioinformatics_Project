@@ -25,7 +25,7 @@ def tsneplot(datapath, metadatapath):
     tsne_df = pd.DataFrame(tsne_features, columns=['x', 'y'], index=numeric_data.index)
     tsne_df = tsne_df.join(meta_df["refinebio_time"])
 
-    sns.scatterplot(x='x', y='y', hue='refinebio_time', data=tsne_df)
+    sns.scatterplot(x='PC1', y='PC2', hue='refinebio_time', data=tsne_df)
     plt.title("t-SNE plot by time point")
     plt.show()
 

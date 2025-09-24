@@ -28,7 +28,7 @@ def umapplot(datapath, metadatapath):
     umap_df = pd.DataFrame(u_features, index=numeric_data.index, columns=['x', 'y'])
     umap_df = umap_df.join(meta_df["refinebio_time"])
 
-    sns.scatterplot(x='x', y='y', hue='refinebio_time', data=umap_df, palette='tab10')
+    sns.scatterplot(x='PC1', y='PC2', hue='refinebio_time', data=umap_df, palette='tab10')
     plt.title("UMAP plot by time point")
     plt.show()
 

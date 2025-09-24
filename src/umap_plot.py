@@ -25,7 +25,7 @@ def umapplot(datapath, metadatapath):
     reducer = umap.UMAP(n_neighbors=15, min_dist=0.1, random_state=32)
     u_features = reducer.fit_transform(scaled_data)
 
-    umap_df = pd.DataFrame(u_features, index=numeric_data.index, columns=['x', 'y'])
+    umap_df = pd.DataFrame(u_features, index=numeric_data.index, columns=['PC1', 'PC2'])
     umap_df = umap_df.join(meta_df["refinebio_time"])
 
     sns.scatterplot(x='PC1', y='PC2', hue='refinebio_time', data=umap_df, palette='tab10')
@@ -33,4 +33,4 @@ def umapplot(datapath, metadatapath):
     plt.show()
 
 
-# umapplot("data/with_gene_names.tsv", "data/metadata_SRP120552.tsv")
+umapplot("data/with_gene_names.tsv", "data/metadata_SRP120552.tsv")

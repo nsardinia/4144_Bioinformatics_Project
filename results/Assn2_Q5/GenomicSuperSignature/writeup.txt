@@ -1,0 +1,4 @@
+I used the GenomicSuperSignature library to validate the dataset to identify which publicly available, gene expression patterns (RAVs) are most relevant to the dataset.
+By comparing the expression profiles against the RAVs, we can highlights the key pathways or biological processes that are strongly represented in the data. 
+The top matching signals, can be interpreted in terms of their associated functions or disease relevance, providing insight into the underlying biology.
+Using GenomicSuperSignature, there is no way to explicitly run analyses with a specific ontology (Gene, Disease), but the strongest correlated RAVs can be examined for their annotations to infer which biological pathways, processes, or disease associations are most relevant.

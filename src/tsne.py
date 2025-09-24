@@ -22,7 +22,7 @@ def tsneplot(datapath, metadatapath):
     # Make and color code TSNE Plot
     m = TSNE(learning_rate=50, random_state=32)
     tsne_features = m.fit_transform(numeric_data)
-    tsne_df = pd.DataFrame(tsne_features, columns=['x', 'y'], index=numeric_data.index)
+    tsne_df = pd.DataFrame(tsne_features, columns=['PC1', 'PC2'], index=numeric_data.index)
     tsne_df = tsne_df.join(meta_df["refinebio_time"])
 
     sns.scatterplot(x='PC1', y='PC2', hue='refinebio_time', data=tsne_df)
@@ -30,4 +30,4 @@ def tsneplot(datapath, metadatapath):
     plt.show()
 
 
-# tsneplot("data/with_gene_names.tsv", "data/metadata_SRP120552.tsv")
+tsneplot("data/with_gene_names.tsv", "data/metadata_SRP120552.tsv")

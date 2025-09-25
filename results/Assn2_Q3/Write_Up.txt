@@ -1,0 +1,5 @@
+The volcano plots of the data show a large difference between t0 and any of the other times,
+but a smaller difference amongst the other times. As time progress the data tend to bunch up
+towards the center of the plot. This shows that a large change occurs between the
+starting condition and the other conditions, but the change between any of the non-starting time periods
+is much smaller.

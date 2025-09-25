@@ -34,7 +34,7 @@ for (f in files) {
   
   GOdata <- new("topGOdata",
                 description = "GO enrichment",
-                ontology = "BP",   # BP = Biological Process, MF, CC also possible
+                ontology = "BP",   # BP = Biological Process
                 allGenes = geneList,
                 geneSel = function(x) x == 1,
                 nodeSize = 10,

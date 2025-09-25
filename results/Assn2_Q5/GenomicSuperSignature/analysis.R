@@ -41,5 +41,9 @@ write.csv(top_50, "GenomicSuperSignature_results.csv")
 heatmapTable(val_all, RAVmodel = RAVmodel, num.out = 10, swCutoff = 0)
 plotValidate(val_all, interactive = FALSE)
 
+validated_ind <- validatedSignatures(val_all, RAVmodel, num.out = 3, 
+                                     swCutoff = 0, indexOnly = TRUE)
 
+set.seed(1)
+drawWordcloud(RAVmodel, validated_ind[1])
 

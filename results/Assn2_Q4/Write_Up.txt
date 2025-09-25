@@ -1,0 +1,4 @@
+The heatmaps show distinct groups between the initial time t0 and the final time t72. Also, there is very
+high gene expression when analyzing change between t24 and t48. This could be where the cells start to rapidly
+reprogram if all the genes become more expressed. Overall, gene expression increases with time, but has a large
+spike between 24 and 48 hours before lowering down towards 0.

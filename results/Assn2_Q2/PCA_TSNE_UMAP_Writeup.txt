@@ -1,1 +1,6 @@
-The PCA plot showed how there were many outliers at t0 with the rest of the data centralizing around -50 on the x axis and 0 on the y axis. This is in contrast to the UMAP plot which had all 4 data groups more grouped together. The UMAP plot also showed a correlation between the data with y increasing as x increased until a huge cluster at x = 0. Finally, the t-SNE plot showed how t0 and t24 tended to cluster to themselves along with a large section of points consisting of t48, t72, and a little bit of t24 samples.
+The PCA plot showed how there were many outliers at t0 with the rest of the data centralizing around
+-50 on the x-axis and 0 on the y-axis. This is in contrast to the UMAP plot which had all 4 data
+groups more grouped together. The UMAP plot also showed a correlation between the data with y
+increasing as x increased until a huge cluster at x = 0. Finally, the t-SNE plot showed how t0
+and t24 tended to cluster to themselves along with a large section of points consisting of t48,
+t72, and a little bit of t24 samples.

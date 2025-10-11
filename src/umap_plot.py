@@ -22,7 +22,7 @@ def umapplot(datapath, metadatapath):
     scaled_data = preprocessing.scale(numeric_data)  # Scale data
 
     # Create umap
-    reducer = umap.UMAP(n_neighbors=15, min_dist=0.1, random_state=32)
+    reducer = umap.UMAP(n_neighbors=10, min_dist=0.1, random_state=32)
     u_features = reducer.fit_transform(scaled_data)
 
     umap_df = pd.DataFrame(u_features, index=numeric_data.index, columns=['PC1', 'PC2'])

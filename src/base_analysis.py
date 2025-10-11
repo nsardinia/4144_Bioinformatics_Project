@@ -30,6 +30,7 @@ if __name__ == "__main__":
 
 
 """
+The density plot uses the median expression range and plots it.
 The data sets includes 43405 genes from 658 samples with little variance. The data had a lower variance of
 about 0.85 with the total range of log scaled data spanning from about 0.45 to 7.58. A vast majority of the
 data is centralized between 0 and 1 (about 80%) with some outliers skewing the data towards the right.

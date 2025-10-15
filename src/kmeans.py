@@ -33,7 +33,7 @@ def optimize(datapath, max_k):
     plt.show()
 
 
-def kmeans(datapath, k, num_of_genes):
+def kmeans(datapath, k, num_of_genes) -> list[int]:
 
     df = pd.read_csv(datapath, sep="\t")
 
@@ -61,7 +61,7 @@ def kmeans(datapath, k, num_of_genes):
     plt.xlabel("PCA 1")
     plt.ylabel("PCA 2")
     plt.show()
-    return pd.Series(clusters, name=f"{num_of_genes}_genes")
+    return clusters
 # Optimize("data/with_gene_names.tsv", 100)
 # Optimal seems to be around k = 8, as the steepest drops in the inertia curve occur around k = 5 through k = 8.
 # Afterward the inertia values get smaller in about a linear rate.

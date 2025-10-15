@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.decomposition import PCA
 from scipy.stats import chi2_contingency
-
+from sklearn.preprocessing import StandardScaler
 
 def optimize(datapath, max_k):
     means = []
@@ -46,14 +46,14 @@ def kmeans(datapath, k, num_of_genes):
     gene_var = numeric_data.var(axis=1)
     genes = gene_var.sort_values(ascending=False).head(num_of_genes).index
     data = numeric_data.loc[genes]
-
+    scaled_data = StandardScaler().fit_transform(data)
     km = KMeans(n_clusters=k, random_state=42)
-    clusters = km.fit_predict(data)
+    clusters = km.fit_predict(scaled_data)
     clustered_df = data.copy()
     clustered_df['Cluster'] = clusters
 
     pca = PCA(n_components=2, random_state=42)
-    pca_result = pca.fit_transform(data)
+    pca_result = pca.fit_transform(scaled_data)
 
     # Plot
     sns.scatterplot(x=pca_result[:, 0], y=pca_result[:, 1], hue=clusters, palette='Set2')
@@ -92,7 +92,7 @@ g_1000 = kmeans("data/with_gene_names.tsv", 8, 1000)
 g_5000 = kmeans("data/with_gene_names.tsv", 8, 5000)
 g_10000 = kmeans("data/with_gene_names.tsv", 8, 10000)
 
-chi(g_10, g_100, g_1000, g_5000, g_10000)
+#chi(g_10, g_100, g_1000, g_5000, g_10000)
 
 """
 Comparison        Chi²      p-value  DOF  Common Genes

@@ -33,7 +33,7 @@ def optimize(datapath, max_k):
     plt.show()
 
 
-def kmeans(datapath, k, num_of_genes) -> list[int]:
+def kmeans_for_heatmap(datapath, k, num_of_genes) -> list[int]:
 
     df = pd.read_csv(datapath, sep="\t")
 
@@ -67,6 +67,38 @@ def kmeans(datapath, k, num_of_genes) -> list[int]:
 # Afterward the inertia values get smaller in about a linear rate.
 
 
+def kmeans(datapath, k, num_of_genes):
+
+    df = pd.read_csv(datapath, sep="\t")
+
+    if df.columns[0].lower().startswith("ensg") or not pd.api.types.is_numeric_dtype(df.iloc[:, 0]):
+        df = df.set_index(df.columns[0])
+
+    transposed = df.T  # Transpose the data
+
+    numeric_data = transposed.apply(pd.to_numeric, errors="coerce").fillna(0)  # Convert strings to numeric data
+    gene_var = numeric_data.var(axis=1)
+    genes = gene_var.sort_values(ascending=False).head(num_of_genes).index
+    data = numeric_data.loc[genes]
+    scaled_data = StandardScaler().fit_transform(data)
+    km = KMeans(n_clusters=k, random_state=42)
+    clusters = km.fit_predict(scaled_data)
+    clustered_df = data.copy()
+    clustered_df['Cluster'] = clusters
+
+    pca = PCA(n_components=2, random_state=42)
+    pca_result = pca.fit_transform(scaled_data)
+
+    # Plot
+    sns.scatterplot(x=pca_result[:, 0], y=pca_result[:, 1], hue=clusters, palette='Set2')
+    plt.title(f"K-means clustering (k={k})")
+    plt.xlabel("PCA 1")
+    plt.ylabel("PCA 2")
+    plt.show()
+
+    return pd.Series(clusters, index=data.index, name='Cluster')
+
+
 # Chi Squared
 def chi(g10, g100, g1000, g5000, g10000):
     results = []
@@ -92,20 +124,20 @@ g_1000 = kmeans("data/with_gene_names.tsv", 8, 1000)
 g_5000 = kmeans("data/with_gene_names.tsv", 8, 5000)
 g_10000 = kmeans("data/with_gene_names.tsv", 8, 10000)
 
-#chi(g_10, g_100, g_1000, g_5000, g_10000)
+chi(g_10, g_100, g_1000, g_5000, g_10000)
 
 """
-Comparison        Chi²      p-value  DOF  Common Genes
-10 vs 100   10.000000 1.885735e-01    7            10
-10 vs 1000   17.333333 2.388493e-01   14            10
-10 vs 5000   17.333333 2.388493e-01   14            10
-10 vs 10000   17.333333 2.388493e-01   14            10
-100 vs 1000  146.364031 8.597366e-21   21           100
-100 vs 5000  146.364031 8.597366e-21   21           100
-100 vs 10000  146.364031 8.597366e-21   21           100
-1000 vs 10000 4613.000000 0.000000e+00   49           659
-1000 vs 5000 4613.000000 0.000000e+00   49           659
-5000 vs 10000 4613.000000 0.000000e+00   49           659
+Comparison        Chi²  p-value  DOF  Common Genes
+    10 vs 100   30.000000 0.091988   21            10
+   10 vs 1000   10.000000 0.188573    7            10
+   10 vs 5000   10.000000 0.188573    7            10
+  10 vs 10000   10.000000 0.188573    7            10
+  100 vs 1000   13.657771 0.057614    7           100
+  100 vs 5000   13.657771 0.057614    7           100
+ 100 vs 10000   13.657771 0.057614    7           100
+1000 vs 10000 4613.000000 0.000000   49           659
+ 1000 vs 5000 4613.000000 0.000000   49           659
+5000 vs 10000 4613.000000 0.000000   49           659
 
 As the number of genes among the comparisons increased the amount of shared genes also increased. An interesting
 observation occurred where The top 1000 genes did not correlate 1:1 to the top 5000, or 10000 genes. This shows

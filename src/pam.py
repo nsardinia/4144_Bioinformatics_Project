@@ -8,37 +8,6 @@ from sklearn.preprocessing import StandardScaler
 from scipy.stats import chi2_contingency
 from sklearn.metrics import silhouette_score
 
-# Find optimal number of clusters
-def optimize_pam(datapath, max_k):
-    means = []
-    inertias = []
-
-    df = pd.read_csv(datapath, sep="\t")
-    expression_data = df.iloc[:, 2:]
-    expression_data = expression_data.set_index(expression_data.columns[0])
-    
-    gene_var = expression_data.var(axis=1)
-    genes = gene_var.sort_values(ascending=False).head(5000).index
-    selected_genes_data = expression_data.loc[genes]
-    
-    transposed = selected_genes_data.T
-    numeric_data = transposed.apply(pd.to_numeric, errors="coerce").fillna(0)
-    numeric_data.columns = numeric_data.columns.astype(str)
-    scaled_data = StandardScaler().fit_transform(numeric_data)
-    for k in range(1, max_k):
-        pam = KMedoids(n_clusters=k, random_state=42)
-        pam.fit(scaled_data)
-        means.append(k)
-        inertias.append(pam.inertia_ if hasattr(pam, "inertia_") else (pam.transform(scaled_data).min(axis=1).sum()))
-    fig, ax = plt.subplots(figsize=(10,5))
-    ax.plot(means, inertias, 'o-')
-    ax.set_xlabel('Numbers of Clusters')
-    ax.set_ylabel('Sum of Distances to Medoids')
-    ax.grid(True)
-    plt.savefig('../results/Assn3_Q2/PAM/pam_optimization.png', dpi=300, bbox_inches='tight')
-    plt.close()
-
-
 def compare_k_values(datapath, num_of_genes, max_k=10):
     df = pd.read_csv(datapath, sep="\t")
     expression_data = df.iloc[:, 2:]

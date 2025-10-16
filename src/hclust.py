@@ -7,7 +7,6 @@ def hclust(top_5000_df: pd.DataFrame, k:int) -> list[int]:
     """
     agg_clustering = AgglomerativeClustering(
                         n_clusters=k, 
-                        affinity='euclidean', 
                         linkage='ward',
                     )
     

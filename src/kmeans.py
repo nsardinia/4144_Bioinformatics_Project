@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, MiniBatchKMeans
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.decomposition import PCA
@@ -33,35 +33,11 @@ def optimize(datapath, max_k):
     plt.show()
 
 
-def kmeans_for_heatmap(datapath, k, num_of_genes) -> list[int]:
+def kmeans_for_heatmap(top_5000_df: pd.DataFrame, k:int) -> list[int]:
 
-    df = pd.read_csv(datapath, sep="\t")
-
-    if df.columns[0].lower().startswith("ensg") or not pd.api.types.is_numeric_dtype(df.iloc[:, 0]):
-        df = df.set_index(df.columns[0])
-
-    transposed = df.T  # Transpose the data
-
-    numeric_data = transposed.apply(pd.to_numeric, errors="coerce").fillna(0)  # Convert strings to numeric data
-    gene_var = numeric_data.var(axis=1)
-    genes = gene_var.sort_values(ascending=False).head(num_of_genes).index
-    data = numeric_data.loc[genes]
-    scaled_data = StandardScaler().fit_transform(data)
-    km = KMeans(n_clusters=k, random_state=42)
-    clusters = km.fit_predict(scaled_data)
-    clustered_df = data.copy()
-    clustered_df['Cluster'] = clusters
-
-    pca = PCA(n_components=2, random_state=42)
-    pca_result = pca.fit_transform(scaled_data)
-
-    # Plot
-    sns.scatterplot(x=pca_result[:, 0], y=pca_result[:, 1], hue=clusters, palette='Set2')
-    plt.title(f"K-means clustering (k={k})")
-    plt.xlabel("PCA 1")
-    plt.ylabel("PCA 2")
-    plt.show()
-    return clusters
+    km = MiniBatchKMeans(n_clusters=k, random_state=42, batch_size=256)
+    
+    return  km.fit_predict(top_5000_df)
 # Optimize("data/with_gene_names.tsv", 100)
 # Optimal seems to be around k = 8, as the steepest drops in the inertia curve occur around k = 5 through k = 8.
 # Afterward the inertia values get smaller in about a linear rate.
@@ -118,13 +94,13 @@ def chi(g10, g100, g1000, g5000, g10000):
     print(results_df.to_string(index=False))
 
 
-g_10 = kmeans("data/with_gene_names.tsv", 8, 10)
-g_100 = kmeans("data/with_gene_names.tsv", 8, 100)
-g_1000 = kmeans("data/with_gene_names.tsv", 8, 1000)
-g_5000 = kmeans("data/with_gene_names.tsv", 8, 5000)
-g_10000 = kmeans("data/with_gene_names.tsv", 8, 10000)
+# g_10 = kmeans("data/with_gene_names.tsv", 8, 10)
+# g_100 = kmeans("data/with_gene_names.tsv", 8, 100)
+# g_1000 = kmeans("data/with_gene_names.tsv", 8, 1000)
+# g_5000 = kmeans("data/with_gene_names.tsv", 8, 5000)
+# g_10000 = kmeans("data/with_gene_names.tsv", 8, 10000)
 
-chi(g_10, g_100, g_1000, g_5000, g_10000)
+# chi(g_10, g_100, g_1000, g_5000, g_10000)
 
 """
 Comparison        Chi²  p-value  DOF  Common Genes

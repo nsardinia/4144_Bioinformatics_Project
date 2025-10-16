@@ -117,10 +117,10 @@ def chi(g10, g100, g1000, g5000, g10000):
 
 
 if __name__ == "__main__":
-    g_10 = pam("data/with_gene_names.tsv", 4, 10)
-    g_100 = pam("data/with_gene_names.tsv", 4, 100)
-    g_1000 = pam("data/with_gene_names.tsv", 4, 1000)
-    g_5000 = pam("data/with_gene_names.tsv", 4, 5000)
-    g_10000 = pam("data/with_gene_names.tsv", 4, 10000)
+    g_10 = pam("data/with_gene_names.tsv", 5, 10)
+    g_100 = pam("data/with_gene_names.tsv", 5, 100)
+    g_1000 = pam("data/with_gene_names.tsv", 5, 1000)
+    g_5000 = pam("data/with_gene_names.tsv", 5, 5000)
+    g_10000 = pam("data/with_gene_names.tsv", 5, 10000)
 
     chi(g_10, g_100, g_1000, g_5000, g_10000)

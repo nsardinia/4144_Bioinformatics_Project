@@ -6,6 +6,7 @@ from sklearn.decomposition import PCA
 from scipy.stats import chi2_contingency
 from sklearn.preprocessing import StandardScaler
 
+
 def optimize(datapath, max_k):
     means = []
     inertias = []

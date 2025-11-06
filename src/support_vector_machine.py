@@ -173,7 +173,7 @@ def svm_on_gmm(datapath, num_of_genes, kernel='rbf', C=1.0, n_clusters=8, result
 # Example usage
 if __name__ == "__main__":
     # Run with different numbers of genes
-    gene_counts = [100]
+    gene_counts = [10, 100, 1000, 5000]
     
     for num_genes in gene_counts:
         print(f"\n{'='*80}")
